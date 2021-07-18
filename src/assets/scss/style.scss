@@ -1,22 +1,27 @@
 //font attach
 @font-face {
-    font-family: "Manrope-Bold";
-    src: url("../fonts/Manrope-Bold.ttf") format("truetype");
+    font-family: "JosefinSans-Light";
+    src: url("../fonts/JosefinSans-Light.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "Manrope-ExtraBold";
-    src: url("../fonts/Manrope-ExtraBold.ttf") format("truetype");
+    font-family: "JosefinSans-Medium";
+    src: url("../fonts/JosefinSans-Medium.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "Manrope-Medium";
-    src: url("../fonts/Manrope-Medium.ttf") format("truetype");
+    font-family: "JosefinSans-MediumItalic";
+    src: url("../fonts/JosefinSans-MediumItalic.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "Manrope-Regular";
-    src: url("../fonts/Manrope-Regular.ttf") format("truetype");
+    font-family: "JosefinSans-Regular";
+    src: url("../fonts/JosefinSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "JosefinSans-Thin";
+    src: url("../fonts/JosefinSans-Thin.ttf") format("truetype");
 }
 
 @import "./consts/main.scss";

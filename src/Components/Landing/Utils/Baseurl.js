@@ -1,2 +1,2 @@
-export const baseUrl = "https://api.weatherapi.com/v1/";
-export const countryList = "https://api.first.org/";
+export const baseUrl = "http://www.omdbapi.com/";
+// export const countryList = "https://api.first.org/";
