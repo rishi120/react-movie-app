@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Renderappheader } from "./Header";
 import movieListIcon from "../../assets/images/movie-reel.png";
+import Rendermodal from "./Modal";
 
 export const Renderindex = (props) => {
   return (
@@ -13,17 +14,22 @@ export const Renderindex = (props) => {
         handleFormSubmit={props.handleFormSubmit}
       />
       <section>
+        <Rendermodal show={props.show} handleClose={props.handleClose} />
         <div className="movie-grid-wrapper">
           <Container>
             {props.showMovieIcon && (
               <img src={movieListIcon} className="movie-list-icon" />
             )}
+            {props.showError && <p>Error!</p>}
             <Row>
-              {props.fetchMovies.map((getMovies) => {
-                return (
+              {props.fetchMovies &&
+                props.fetchMovies.map((getMovies, index) => (
                   <>
-                    <Col md={3}>
-                      <div className="movie-wrapper">
+                    <Col md={3} key={index}>
+                      <div
+                        className="movie-wrapper"
+                        onClick={() => props.handleShow(index)}
+                      >
                         <img src={getMovies.Poster} className="img-fluid" />
                         <div className="movie-content">
                           <h1>{getMovies.Title}</h1>
@@ -35,8 +41,7 @@ export const Renderindex = (props) => {
                       <div className="space-between"></div>
                     </Col>
                   </>
-                );
-              })}
+                ))}
             </Row>
           </Container>
         </div>
