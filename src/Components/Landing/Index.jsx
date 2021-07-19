@@ -14,7 +14,18 @@ export const Renderindex = (props) => {
         handleFormSubmit={props.handleFormSubmit}
       />
       <section>
-        <Rendermodal show={props.show} handleClose={props.handleClose} />
+        <Rendermodal
+          show={props.show}
+          handleClose={props.handleClose}
+          showMoviePoster={props.showMoviePoster}
+          showMovieTitle={props.showMovieTitle}
+          movieRating={props.movieRating}
+          genre={props.genre}
+          movieRuntime={props.movieRuntime}
+          actors={props.actors}
+          moviePlot={props.moviePlot}
+          movieDirector={props.movieDirector}
+        />
         <div className="movie-grid-wrapper">
           <Container>
             {props.showMovieIcon && (
@@ -28,7 +39,9 @@ export const Renderindex = (props) => {
                     <Col md={3} key={index}>
                       <div
                         className="movie-wrapper"
-                        onClick={() => props.handleShow(index)}
+                        onClick={() =>
+                          props.handleShow(getMovies.Poster, getMovies.Title)
+                        }
                       >
                         <img src={getMovies.Poster} className="img-fluid" />
                         <div className="movie-content">

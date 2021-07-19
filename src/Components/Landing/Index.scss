@@ -58,6 +58,7 @@ section {
             padding: 10px;
             @include border-radius(10px);
             height: 400px;
+            cursor: pointer;
             img {
                 height: 300px;
                 width: 100%;
@@ -78,6 +79,31 @@ section {
         .space-between {
             width: 100%;
             padding: 15px;
+        }
+    }
+}
+
+.modal {
+    backdrop-filter: blur(10px);
+    .modal-content {
+        @include border-radius(10px);
+    }
+}
+
+.modal-content-wrapper {
+    padding: 10px 0 10px 0;
+    height: 100%;
+    h1 {
+        font: 20px $Josefinmedium;
+    }
+    p {
+        font: 15px $Josefinmedium;
+        span {
+            opacity: 0.6;
+            padding-left: 10px;
+        }
+        &:last-child {
+            line-height: 22px;
         }
     }
 }

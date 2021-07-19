@@ -12,6 +12,14 @@ const Rendermastercomponent = () => {
   const [showError, setShowError] = useState(false);
   const [showMovieRating, setShowMovieRating] = useState([]);
   const [show, setShow] = useState(false);
+  const [showMoviePoster, setShowMoviePoster] = useState();
+  const [showMovieTitle, setShowMovieTitle] = useState("");
+  const [movieRating, setMovieRating] = useState([]);
+  const [genre, setGenre] = useState("");
+  const [movieRuntime, setMovieRuntime] = useState();
+  const [actors, setGetActors] = useState("");
+  const [moviePlot, setGetMoviePlot] = useState("");
+  const [movieDirector, setMovieDirector] = useState("");
 
   function handleInputValue(getInputValue) {
     setInputValue(getInputValue);
@@ -30,23 +38,26 @@ const Rendermastercomponent = () => {
         setShowError(true);
         console.log(error);
       });
+  }
+  const handleClose = () => setShow(false);
+  const handleShow = (getPoster, getTitle) => {
+    setShow(true);
+    setShowMoviePoster(getPoster);
+    setShowMovieTitle(getTitle);
     /* request for movie ratings */
-    Axios.get(baseUrl + `?t=${inputValue}&apikey=b6c6ed1f`)
+    Axios.get(baseUrl + `?t=${getTitle}&apikey=b6c6ed1f`)
       .then((response) => {
-        setShowMovieRating(response.data.Ratings);
-        setShowMovieIcon(false);
+        setMovieRating(response.data.Ratings[0].Value);
+        setGenre(response.data.Genre);
+        setMovieRuntime(response.data.Runtime);
+        setGetActors(response.data.Actors);
+        setGetMoviePlot(response.data.Plot);
+        setMovieDirector(response.data.Director);
       })
       .catch((error) => {
-        setShowError(true);
         console.log(error);
       });
-  }
-
-  // function handleClick(getId) {
-  //   console.log(getId);
-  // }
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  };
 
   return (
     <Renderindex
@@ -56,10 +67,17 @@ const Rendermastercomponent = () => {
       fetchMovies={fetchMovies}
       showError={showError}
       showMovieRating={showMovieRating}
-      // handleClick={handleClick}
       show={show}
       handleClose={handleClose}
       handleShow={handleShow}
+      showMoviePoster={showMoviePoster}
+      showMovieTitle={showMovieTitle}
+      movieRating={movieRating}
+      genre={genre}
+      movieRuntime={movieRuntime}
+      actors={actors}
+      moviePlot={moviePlot}
+      movieDirector={movieDirector}
     />
   );
 };
