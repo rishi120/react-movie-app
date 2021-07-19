@@ -20,6 +20,8 @@ const Rendermastercomponent = () => {
   const [actors, setGetActors] = useState("");
   const [moviePlot, setGetMoviePlot] = useState("");
   const [movieDirector, setMovieDirector] = useState("");
+  const [movieRelease, setMovieReleaseDate] = useState();
+  const [loader, setLoader] = useState(false);
 
   function handleInputValue(getInputValue) {
     setInputValue(getInputValue);
@@ -39,11 +41,21 @@ const Rendermastercomponent = () => {
         console.log(error);
       });
   }
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setMovieRating([]);
+    setGenre("");
+    setMovieRuntime("");
+    setGetActors("");
+    setGetMoviePlot("");
+    setMovieDirector("");
+    setMovieReleaseDate("");
+  };
   const handleShow = (getPoster, getTitle) => {
     setShow(true);
     setShowMoviePoster(getPoster);
     setShowMovieTitle(getTitle);
+    setLoader(true);
     /* request for movie ratings */
     Axios.get(baseUrl + `?t=${getTitle}&apikey=b6c6ed1f`)
       .then((response) => {
@@ -53,6 +65,8 @@ const Rendermastercomponent = () => {
         setGetActors(response.data.Actors);
         setGetMoviePlot(response.data.Plot);
         setMovieDirector(response.data.Director);
+        setMovieReleaseDate(response.data.Released);
+        setLoader(false);
       })
       .catch((error) => {
         console.log(error);
@@ -78,6 +92,8 @@ const Rendermastercomponent = () => {
       actors={actors}
       moviePlot={moviePlot}
       movieDirector={movieDirector}
+      movieRelease={movieRelease}
+      loader={loader}
     />
   );
 };

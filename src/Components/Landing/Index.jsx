@@ -25,6 +25,8 @@ export const Renderindex = (props) => {
           actors={props.actors}
           moviePlot={props.moviePlot}
           movieDirector={props.movieDirector}
+          movieRelease={props.movieRelease}
+          loader={props.loader}
         />
         <div className="movie-grid-wrapper">
           <Container>

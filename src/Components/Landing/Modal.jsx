@@ -26,6 +26,10 @@ const Rendermodal = (props) => {
       movieDesp: props.movieDirector,
     },
     {
+      name: "Release Date",
+      movieDesp: props.movieRelease,
+    },
+    {
       name: "Plot",
       movieDesp: props.moviePlot,
     },
@@ -48,6 +52,7 @@ const Rendermodal = (props) => {
           <Col md={8}>
             <div className="modal-content-wrapper">
               <h1>{props.showMovieTitle}</h1>
+              {props.loader && <p>Loading...</p>}
               {paragraphContent.map((getParaContent, index) => {
                 return (
                   <p key={index}>
