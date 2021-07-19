@@ -33,30 +33,39 @@ export const Renderindex = (props) => {
             {props.showMovieIcon && (
               <img src={movieListIcon} className="movie-list-icon" />
             )}
-            {props.showError && <p>Error!</p>}
+            {props.showError && (
+              <p className="data-error text-danger">
+                Something went wrong. Please try again!
+              </p>
+            )}
             <Row>
-              {props.fetchMovies &&
-                props.fetchMovies.map((getMovies, index) => (
-                  <>
-                    <Col md={3} key={index}>
-                      <div
-                        className="movie-wrapper"
-                        onClick={() =>
-                          props.handleShow(getMovies.Poster, getMovies.Title)
-                        }
-                      >
-                        <img src={getMovies.Poster} className="img-fluid" />
-                        <div className="movie-content">
-                          <h1>{getMovies.Title}</h1>
-                          <p>
-                            Year:<span>{getMovies.Year}</span>
-                          </p>
+              {props.fetchMovies?.length
+                ? props.fetchMovies.map((getMovies, index) => (
+                    <>
+                      <Col md={3} key={index}>
+                        <div
+                          className="movie-wrapper"
+                          onClick={() =>
+                            props.handleShow(getMovies.Poster, getMovies.Title)
+                          }
+                        >
+                          <img src={getMovies.Poster} className="img-fluid" />
+                          <div className="movie-content">
+                            <h1>{getMovies.Title}</h1>
+                            <p>
+                              Year:<span>{getMovies.Year}</span>
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="space-between"></div>
-                    </Col>
-                  </>
-                ))}
+                        <div className="space-between"></div>
+                      </Col>
+                    </>
+                  ))
+                : props.movieError && (
+                    <p className="data-error text-danger w-100">
+                      No matching movies found
+                    </p>
+                  )}
             </Row>
           </Container>
         </div>

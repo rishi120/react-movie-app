@@ -53,6 +53,11 @@ section {
             display: block;
             margin: 15% auto;
         }
+        .data-error {
+            font: 18px $Josefinmedium;
+            text-align: center;
+            margin-top: 20px;
+        }
         .movie-wrapper {
             background-color: $font-white;
             padding: 10px;
@@ -87,6 +92,9 @@ section {
     backdrop-filter: blur(10px);
     .modal-content {
         @include border-radius(10px);
+    }
+    .modal-header {
+        border-bottom: 0;
     }
 }
 

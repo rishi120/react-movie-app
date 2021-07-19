@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 // import gsap, { Power2 } from "gsap";
 import Axios from "axios";
 import { baseUrl } from "./Components/Landing/Utils/Baseurl";
@@ -22,6 +22,7 @@ const Rendermastercomponent = () => {
   const [movieDirector, setMovieDirector] = useState("");
   const [movieRelease, setMovieReleaseDate] = useState();
   const [loader, setLoader] = useState(false);
+  const [movieError, setMovieError] = useState(false);
 
   function handleInputValue(getInputValue) {
     setInputValue(getInputValue);
@@ -30,15 +31,17 @@ const Rendermastercomponent = () => {
   function handleFormSubmit(e) {
     e.preventDefault();
     setShowError(false);
+    setMovieError(false);
     /* request for movie list */
     Axios.get(baseUrl + `?s=${inputValue}&apikey=b6c6ed1f`)
       .then((response) => {
         setFetchMovies(response.data.Search);
         setShowMovieIcon(false);
+        setMovieError(true);
       })
       .catch((error) => {
         setShowError(true);
-        console.log(error);
+        setShowMovieIcon(false);
       });
   }
   const handleClose = () => {
@@ -94,6 +97,7 @@ const Rendermastercomponent = () => {
       movieDirector={movieDirector}
       movieRelease={movieRelease}
       loader={loader}
+      movieError={movieError}
     />
   );
 };
