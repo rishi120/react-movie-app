@@ -42,6 +42,7 @@ const Rendermastercomponent = () => {
       .catch((error) => {
         setShowError(true);
         setShowMovieIcon(false);
+        setMovieError(false);
       });
   }
   const handleClose = () => {
