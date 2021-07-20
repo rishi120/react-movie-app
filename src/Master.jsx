@@ -33,17 +33,21 @@ const Rendermastercomponent = () => {
     e.preventDefault();
     setShowError(false);
     setMovieError(false);
+    setShowMovieIcon(false);
+    setLoader(true);
     /* request for movie list */
     Axios.get(baseUrl + `?s=${inputValue}&apikey=${apiKey}`)
       .then((response) => {
         setFetchMovies(response.data.Search);
         setShowMovieIcon(false);
         setMovieError(true);
+        setLoader(false);
       })
       .catch((error) => {
         setShowError(true);
         setShowMovieIcon(false);
         setMovieError(false);
+        setLoader(false);
       });
   }
   const handleClose = () => {

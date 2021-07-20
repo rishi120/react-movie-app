@@ -39,6 +39,9 @@ export const Renderindex = (props) => {
                 Something went wrong. Please try again!
               </p>
             )}
+            {props.loader && (
+              <p className="data-error text-success">Loading...</p>
+            )}
             <Row>
               {props.fetchMovies?.length
                 ? props.fetchMovies.map((getMovies, index) => (
