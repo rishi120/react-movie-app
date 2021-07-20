@@ -43,7 +43,7 @@ export const Renderindex = (props) => {
               {props.fetchMovies?.length
                 ? props.fetchMovies.map((getMovies, index) => (
                     <>
-                      <Col md={3} key={index}>
+                      <Col md={3} key={index} className="col-animations">
                         <div
                           className="movie-wrapper"
                           onClick={() =>

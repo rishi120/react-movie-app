@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-// import gsap, { Power2 } from "gsap";
+import React, { useState, useEffect } from "react";
+import gsap, { Power2 } from "gsap";
 import Axios from "axios";
 import { baseUrl } from "./Components/Landing/Utils/Baseurl";
 import { Renderindex } from "./Components/Landing/Index";
@@ -77,6 +77,18 @@ const Rendermastercomponent = () => {
         console.log(error);
       });
   };
+
+  /* gsap component animation */
+  useEffect(() => {
+    const gsapTimeline = gsap.timeline();
+    const colAnimations = ".col-animations";
+    gsapTimeline.from(colAnimations, {
+      opacity: 0,
+      y: 50,
+      stagger: 0.1,
+      duration: 0.5,
+    });
+  }, [fetchMovies]);
 
   return (
     <Renderindex
