@@ -39,7 +39,7 @@ export const Renderindex = (props) => {
                 Something went wrong. Please try again!
               </p>
             )}
-            {props.loader && (
+            {props.movieListLoader && (
               <p className="data-error text-success">Loading...</p>
             )}
             <Row>

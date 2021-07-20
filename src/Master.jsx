@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import gsap, { Power2 } from "gsap";
+import gsap from "gsap";
 import Axios from "axios";
 import { baseUrl } from "./Components/Landing/Utils/Baseurl";
 import { Renderindex } from "./Components/Landing/Index";
@@ -22,6 +22,7 @@ const Rendermastercomponent = () => {
   const [movieDirector, setMovieDirector] = useState("");
   const [movieRelease, setMovieReleaseDate] = useState();
   const [loader, setLoader] = useState(false);
+  const [movieListLoader, setMovieLoader] = useState(false);
   const [movieError, setMovieError] = useState(false);
   const apiKey = "b6c6ed1f";
 
@@ -35,6 +36,7 @@ const Rendermastercomponent = () => {
     setMovieError(false);
     setShowMovieIcon(false);
     setLoader(true);
+    setMovieLoader(true);
     /* request for movie list */
     Axios.get(baseUrl + `?s=${inputValue}&apikey=${apiKey}`)
       .then((response) => {
@@ -42,12 +44,15 @@ const Rendermastercomponent = () => {
         setShowMovieIcon(false);
         setMovieError(true);
         setLoader(false);
+        setMovieLoader(false);
       })
       .catch((error) => {
         setShowError(true);
         setShowMovieIcon(false);
         setMovieError(false);
         setLoader(false);
+        setMovieLoader(false);
+        setFetchMovies([]);
       });
   }
   const handleClose = () => {
@@ -115,6 +120,7 @@ const Rendermastercomponent = () => {
       movieDirector={movieDirector}
       movieRelease={movieRelease}
       loader={loader}
+      movieListLoader={movieListLoader}
       movieError={movieError}
     />
   );
