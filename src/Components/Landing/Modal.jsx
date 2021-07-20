@@ -2,6 +2,7 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
+import noPoster from "../../assets/images/no-poster-available.jpg";
 
 const Rendermodal = (props) => {
   const paragraphContent = [
@@ -47,7 +48,11 @@ const Rendermodal = (props) => {
       <Modal.Body>
         <Row>
           <Col md={4}>
-            <img src={props.showMoviePoster} className="img-fluid" />
+            {props.showMoviePoster === "N/A" ? (
+              <img src={noPoster} className="img-fluid" />
+            ) : (
+              <img src={props.showMoviePoster} className="img-fluid" />
+            )}
           </Col>
           <Col md={8}>
             <div className="modal-content-wrapper">

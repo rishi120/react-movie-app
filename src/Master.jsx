@@ -23,6 +23,7 @@ const Rendermastercomponent = () => {
   const [movieRelease, setMovieReleaseDate] = useState();
   const [loader, setLoader] = useState(false);
   const [movieError, setMovieError] = useState(false);
+  const apiKey = "b6c6ed1f";
 
   function handleInputValue(getInputValue) {
     setInputValue(getInputValue);
@@ -33,7 +34,7 @@ const Rendermastercomponent = () => {
     setShowError(false);
     setMovieError(false);
     /* request for movie list */
-    Axios.get(baseUrl + `?s=${inputValue}&apikey=b6c6ed1f`)
+    Axios.get(baseUrl + `?s=${inputValue}&apikey=${apiKey}`)
       .then((response) => {
         setFetchMovies(response.data.Search);
         setShowMovieIcon(false);

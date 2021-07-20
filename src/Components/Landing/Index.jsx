@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Renderappheader } from "./Header";
 import movieListIcon from "../../assets/images/movie-reel.png";
+import noPoster from "../../assets/images/no-poster-available.jpg";
 import Rendermodal from "./Modal";
 
 export const Renderindex = (props) => {
@@ -49,7 +50,11 @@ export const Renderindex = (props) => {
                             props.handleShow(getMovies.Poster, getMovies.Title)
                           }
                         >
-                          <img src={getMovies.Poster} className="img-fluid" />
+                          {getMovies.Poster === "N/A" ? (
+                            <img src={noPoster} className="img-fluid" />
+                          ) : (
+                            <img src={getMovies.Poster} className="img-fluid" />
+                          )}
                           <div className="movie-content">
                             <h1>{getMovies.Title}</h1>
                             <p>
